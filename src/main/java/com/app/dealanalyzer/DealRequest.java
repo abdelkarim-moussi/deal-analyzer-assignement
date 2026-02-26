@@ -14,13 +14,11 @@ import java.math.BigDecimal;
 @Getter
 @Setter
 public class DealRequest {
-    @NotBlank
-    @Pattern(regexp = "[A-Z]{3}")
+    @Pattern(regexp = "[A-Z]{3}", message = "currency mast have three uppercase letters (ex: 'MAD')")
     private String fromCurrency;
-    @NotBlank
-    @Pattern(regexp = "[A-Z]{3}")
+    @Pattern(regexp = "[A-Z]{3}",message = "currency mast have three uppercase letters (ex: 'MAD')")
     private String toCurrency;
-    @NotNull
-    @Min(value = 1)
+    @NotNull(message = "amount can not be null")
+    @Min(value = 1, message = "amount must be greater then or equals 1")
     private BigDecimal dealAmount;
 }
