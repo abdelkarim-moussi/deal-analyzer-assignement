@@ -14,12 +14,12 @@ How to Install :
 - run the project locally using `mvn clean package` or use IDE
 - have docker desktop installed
 - run the project using docker using this commands `docker-compose up`
-- project port listening is "8080" access the api endpoint "http://localhost::8080/api/v1/deals"
+- project port listening is "8080" access the api endpoint "http://localhost:8080/api/v1/deals"
 
 How to Use :
 
 to add a deal :
-- using postman or other tool : use "http://localhost::8080/api/v1/deals" with post method
+- using postman or other tool : use "http://localhost:8080/api/v1/deals" with post method
 `
     {
       "fromCurrency":"MAD",
