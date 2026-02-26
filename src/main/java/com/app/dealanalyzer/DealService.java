@@ -12,7 +12,7 @@ public class DealService {
     public Deal requestDeal(DealRequest request){
 
         if(repository.existsDealByFromCurrencyAndToCurrencyAndAmount(request.getFromCurrency(),
-                request.getToCurrency(),request.getDealAmount())){
+                request.getToCurrency(),request.getDealAmount()) >= 1){
             throw new DealAlreadyExistException("There is Already A Deal With This Specifications");
         }
 
