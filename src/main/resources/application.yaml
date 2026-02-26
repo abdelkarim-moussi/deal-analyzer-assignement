@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: deal-analyzer
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5433/deals_db?createDatabaseIfNotExist=true
+    username: postgres
+    password: moussi@25
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+
+logging:
+  file:
+    name: logs/app.log
+    path: logs/
+  level:
+    root: warn
+  pattern:
+    console: "%d{yyyy-MM-DD - HH:mm:ss} -%logger{36} - %msg%n"
