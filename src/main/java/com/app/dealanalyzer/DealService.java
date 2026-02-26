@@ -1,15 +1,18 @@
 package com.app.dealanalyzer;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class DealService {
 
     private final DealRepository repository;
 
     public Deal requestDeal(DealRequest request){
+        log.info("requesting a deal");
 
         if(repository.existsDealByFromCurrencyAndToCurrencyAndAmount(request.getFromCurrency(),
                 request.getToCurrency(),request.getDealAmount()) >= 1){
