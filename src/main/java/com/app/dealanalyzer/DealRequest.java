@@ -1,6 +1,5 @@
 package com.app.dealanalyzer;
 
-import jakarta.validation.GroupSequence;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -16,10 +15,10 @@ import java.math.BigDecimal;
 @Setter
 public class DealRequest {
     @NotBlank
-    @Pattern(regexp = "^[A-B]{3}$")
+    @Pattern(regexp = "[A-Z]{3}")
     private String fromCurrency;
     @NotBlank
-    @Pattern(regexp = "[A-B]{3}")
+    @Pattern(regexp = "[A-Z]{3}")
     private String toCurrency;
     @NotNull
     @Min(value = 1)
