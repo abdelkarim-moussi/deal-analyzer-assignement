@@ -1,5 +1,6 @@
 package com.app.dealanalyzer;
 
+import com.app.dealanalyzer.exception.DealAlreadyExistsException;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -65,7 +66,7 @@ public class DealServiceTests {
                 request.getToCurrency(),
                 request.getDealAmount())).thenReturn(1);
 
-        DealAlreadyExistException exception = assertThrows(DealAlreadyExistException.class,() -> service.requestDeal(request));
+        DealAlreadyExistsException exception = assertThrows(DealAlreadyExistsException.class,() -> service.requestDeal(request));
 
         assertEquals("There is Already A Deal With This Specifications",exception.getMessage());
     }

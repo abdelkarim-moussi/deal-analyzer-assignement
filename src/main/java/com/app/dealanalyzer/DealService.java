@@ -1,5 +1,6 @@
 package com.app.dealanalyzer;
 
+import com.app.dealanalyzer.exception.DealAlreadyExistsException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -16,7 +17,7 @@ public class DealService {
 
         if(repository.existsDealByFromCurrencyAndToCurrencyAndAmount(request.getFromCurrency(),
                 request.getToCurrency(),request.getDealAmount()) >= 1){
-            throw new DealAlreadyExistException("There is Already A Deal With This Specifications");
+            throw new DealAlreadyExistsException("There is Already A Deal With This Specifications");
         }
 
         Deal deal = Deal.builder()

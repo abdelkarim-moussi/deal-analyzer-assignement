@@ -1,12 +1,10 @@
-package com.app.dealanalyzer;
+package com.app.dealanalyzer.exception;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
-import lombok.Setter;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Getter
 @AllArgsConstructor

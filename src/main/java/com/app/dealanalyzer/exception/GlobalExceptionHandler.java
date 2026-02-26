@@ -1,4 +1,4 @@
-package com.app.dealanalyzer;
+package com.app.dealanalyzer.exception;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
@@ -15,8 +15,8 @@ import java.util.Map;
 @Slf4j
 public class GlobalExceptionHandler {
 
-    @ExceptionHandler(DealAlreadyExistException.class)
-    public ResponseEntity<ExceptionResponse> handleDealAlreadyExistException(DealAlreadyExistException exception, WebRequest request){
+    @ExceptionHandler(DealAlreadyExistsException.class)
+    public ResponseEntity<ExceptionResponse> handleDealAlreadyExistException(DealAlreadyExistsException exception, WebRequest request){
         log.error("Exception occurred : {}, Request details : {}",
                 exception.getMessage(),
                 request.getDescription(false),exception);
@@ -28,7 +28,7 @@ public class GlobalExceptionHandler {
                 .path(request.getDescription(false))
                 .build();
 
-        return new ResponseEntity<>(response,HttpStatus.NOT_ACCEPTABLE);
+        return new ResponseEntity<>(response,HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
@@ -42,6 +42,6 @@ public class GlobalExceptionHandler {
                 e -> errors.put(e.getField(),e.getDefaultMessage())
         );
 
-        return new ResponseEntity<>(errors,HttpStatus.NOT_ACCEPTABLE);
+        return new ResponseEntity<>(errors,HttpStatus.BAD_REQUEST);
     }
 }
