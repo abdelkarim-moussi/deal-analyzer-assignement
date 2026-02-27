@@ -2,6 +2,7 @@ package com.app.dealanalyzer;
 
 import com.app.dealanalyzer.dto.DealRequest;
 import com.app.dealanalyzer.entity.Deal;
+import com.app.dealanalyzer.exception.CurrenciesMatchException;
 import com.app.dealanalyzer.exception.DealAlreadyExistsException;
 import com.app.dealanalyzer.repository.DealRepository;
 import com.app.dealanalyzer.service.DealServiceImpl;
@@ -68,5 +69,19 @@ public class DealServiceImplTests {
         DealAlreadyExistsException exception = assertThrows(DealAlreadyExistsException.class,() -> service.requestDeal(request));
 
         assertEquals("There is Already A Deal With This Id : "+request.getId(),exception.getMessage());
+    }
+
+    @Test
+    public void requestDealShouldThrowCurrenciesMatchException() {
+
+        DealRequest req = DealRequest.builder()
+                .fromCurrency("MAD")
+                .toCurrency("MAD")
+                .build();
+
+        CurrenciesMatchException exception = assertThrows(CurrenciesMatchException.class,
+                () -> service.requestDeal(req));
+
+        assertEquals("from currency can not be converted to it self",exception.getMessage());
     }
 }
