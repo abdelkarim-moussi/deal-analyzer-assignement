@@ -71,4 +71,15 @@ public class GlobalExceptionHandlerTests {
         assertEquals(errors,res.getBody());
         assertNotNull(res.getBody());
     }
+
+    @Test
+    public void handleCurrenciesMatchExceptionShouldReturnResponseErrors(){
+
+        CurrenciesMatchException ex = Mockito.mock(CurrenciesMatchException.class);
+
+        ResponseEntity<ExceptionResponse> res = handler.handleCurrenciesMatchException(ex,request);
+
+        assertEquals(HttpStatus.BAD_REQUEST,res.getStatusCode());
+        assertNotNull(res.getBody());
+    }
 }
