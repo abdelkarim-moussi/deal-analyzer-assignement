@@ -23,7 +23,7 @@ public class GlobalExceptionHandler {
 
         ExceptionResponse response = ExceptionResponse.builder()
                 .message(exception.getMessage())
-                .error("Deal t Already Exist")
+                .error("Deal Already Exist")
                 .status(400)
                 .path(request.getDescription(false))
                 .build();
