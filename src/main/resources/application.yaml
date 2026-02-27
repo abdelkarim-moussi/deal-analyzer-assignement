@@ -19,3 +19,6 @@ logging:
     root: warn
   pattern:
     console: "%d{yyyy-MM-DD - HH:mm:ss} -%logger{36} - %msg%n"
+
+server:
+  port: 8081

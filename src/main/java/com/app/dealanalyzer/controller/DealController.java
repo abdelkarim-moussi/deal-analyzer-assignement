@@ -1,5 +1,8 @@
-package com.app.dealanalyzer;
+package com.app.dealanalyzer.controller;
 
+import com.app.dealanalyzer.entity.Deal;
+import com.app.dealanalyzer.dto.DealRequest;
+import com.app.dealanalyzer.service.DealServiceImpl;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -12,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/v1/deals")
 @RequiredArgsConstructor
 public class DealController {
-    private final DealService service;
+    private final DealServiceImpl service;
 
     @PostMapping
     public ResponseEntity<Deal> requestDeal(@RequestBody @Valid DealRequest request){

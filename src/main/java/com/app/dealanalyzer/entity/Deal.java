@@ -1,9 +1,6 @@
-package com.app.dealanalyzer;
+package com.app.dealanalyzer.entity;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.Min;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 
@@ -19,7 +16,6 @@ import java.time.LocalDateTime;
 @Table(name = "deals")
 public class Deal {
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
     private String fromCurrency;
     private String toCurrency;

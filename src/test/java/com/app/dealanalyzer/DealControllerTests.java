@@ -1,5 +1,9 @@
 package com.app.dealanalyzer;
 
+import com.app.dealanalyzer.controller.DealController;
+import com.app.dealanalyzer.dto.DealRequest;
+import com.app.dealanalyzer.entity.Deal;
+import com.app.dealanalyzer.service.DealServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -19,7 +23,7 @@ import static org.mockito.Mockito.*;
 public class DealControllerTests {
 
     @Mock
-    private DealService service;
+    private DealServiceImpl service;
 
     @InjectMocks
     private DealController controller;

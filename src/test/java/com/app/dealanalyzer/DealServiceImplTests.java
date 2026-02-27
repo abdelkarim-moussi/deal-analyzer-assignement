@@ -1,6 +1,10 @@
 package com.app.dealanalyzer;
 
+import com.app.dealanalyzer.dto.DealRequest;
+import com.app.dealanalyzer.entity.Deal;
 import com.app.dealanalyzer.exception.DealAlreadyExistsException;
+import com.app.dealanalyzer.repository.DealRepository;
+import com.app.dealanalyzer.service.DealServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -15,13 +19,13 @@ import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
-public class DealServiceTests {
+public class DealServiceImplTests {
 
     @Mock
     private DealRepository repository;
 
     @InjectMocks
-    private DealService service;
+    private DealServiceImpl service;
 
     private DealRequest request;
     private Deal deal;
