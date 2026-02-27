@@ -2816,3 +2816,6 @@ com.app.dealanalyzer.exception.DealAlreadyExistsException: There is Already A De
 	at java.base/java.lang.Thread.run(Thread.java:840) ~[na:na]
 
 2026-02-27T01:45:11.760Z  WARN 56369 --- [deal-analyzer] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-02-27T01:56:42.708Z  WARN 59663 --- [deal-analyzer] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-02-27T01:57:18.832Z  WARN 59865 --- [deal-analyzer] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-02-27T02:00:40.464Z  WARN 60639 --- [deal-analyzer] [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning

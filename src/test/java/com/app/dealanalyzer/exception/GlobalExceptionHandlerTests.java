@@ -42,7 +42,7 @@ public class GlobalExceptionHandlerTests {
         ExceptionResponse response = ExceptionResponse.builder()
                 .message(dealAlreadyExistsException.getMessage())
                 .error("Already Exist")
-                .status(406)
+                .status(400)
                 .path(request.getDescription(false))
                 .build();
 

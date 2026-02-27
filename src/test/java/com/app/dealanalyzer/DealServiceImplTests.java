@@ -33,6 +33,7 @@ public class DealServiceImplTests {
     @BeforeEach
     void setUp(){
         request = DealRequest.builder()
+                .id("deal_1")
                 .fromCurrency("MAD")
                 .toCurrency("JOD")
                 .dealAmount(BigDecimal.valueOf(100))
@@ -49,10 +50,7 @@ public class DealServiceImplTests {
 
     @Test
     public void requestDealShouldCreateDeal(){
-        when(repository.existsDealByFromCurrencyAndToCurrencyAndAmount(
-                request.getFromCurrency(),
-                request.getToCurrency(),
-                request.getDealAmount())).thenReturn(0);
+        when(repository.existsById(request.getId())).thenReturn(false);
 
         when(repository.save(any(Deal.class))).thenReturn(deal);
 
@@ -65,13 +63,10 @@ public class DealServiceImplTests {
 
     @Test
     public void requestDealShouldThrowDealAlreadyExistsException() {
-        when(repository.existsDealByFromCurrencyAndToCurrencyAndAmount(
-                request.getFromCurrency(),
-                request.getToCurrency(),
-                request.getDealAmount())).thenReturn(1);
+        when(repository.existsById(request.getId())).thenReturn(true);
 
         DealAlreadyExistsException exception = assertThrows(DealAlreadyExistsException.class,() -> service.requestDeal(request));
 
-        assertEquals("There is Already A Deal With This Specifications",exception.getMessage());
+        assertEquals("There is Already A Deal With This Id : "+request.getId(),exception.getMessage());
     }
 }
