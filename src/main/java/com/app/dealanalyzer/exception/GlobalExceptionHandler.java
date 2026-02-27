@@ -23,8 +23,8 @@ public class GlobalExceptionHandler {
 
         ExceptionResponse response = ExceptionResponse.builder()
                 .message(exception.getMessage())
-                .error("Already Exist")
-                .status(406)
+                .error("Deal t Already Exist")
+                .status(400)
                 .path(request.getDescription(false))
                 .build();
 
@@ -33,7 +33,7 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<Map<String,String>> handleMethodArgumentNotValidException(MethodArgumentNotValidException exception, WebRequest request){
-        log.error("Invalid Arguments : {}, Request details : {}",
+        log.error("Exception Occurred : {}, Request details : {}",
                 exception.getMessage(),
                 request.getDescription(false),exception);
 
@@ -43,5 +43,21 @@ public class GlobalExceptionHandler {
         );
 
         return new ResponseEntity<>(errors,HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(CurrenciesMatchException.class)
+    public ResponseEntity<ExceptionResponse> handleCurrenciesMatchException(CurrenciesMatchException exception, WebRequest request){
+        log.error("Currencies Match : {}, Request details : {}",
+                exception.getMessage(),
+                request.getDescription(false),exception);
+
+        ExceptionResponse response = ExceptionResponse.builder()
+                .message(exception.getMessage())
+                .error("From Currency is Same As To Currency")
+                .status(400)
+                .path(request.getDescription(false))
+                .build();
+
+        return new ResponseEntity<>(response,HttpStatus.BAD_REQUEST);
     }
 }
